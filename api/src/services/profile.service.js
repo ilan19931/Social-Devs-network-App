@@ -419,7 +419,16 @@ async function getGithubRepos(req, res) {
             }
         });
 
-        res.send(response.data);
+        if (response.status === 200) {
+            res.send(response.data);
+        } else {
+            return res.status(400).send({
+                errors: [{
+                    msg: "can't get github repos."
+                }]
+            });
+
+        }
 
     } catch (err) {
         console.log(err);
