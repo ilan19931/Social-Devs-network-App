@@ -16,12 +16,12 @@ const Register = ({ setAlert, register, isAuthenticated }) => {
     password2: "",
   });
 
+  const navigate = useNavigate();
   if (isAuthenticated) {
     navigate("/dashboard");
   }
 
   const { name, email, password, password2 } = formData;
-  const navigate = useNavigate();
 
   function handleChange(e) {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -33,7 +33,7 @@ const Register = ({ setAlert, register, isAuthenticated }) => {
     if (password !== password2) {
       setAlert("passwords doesn't match", "danger");
     } else {
-      register({ name, email, password });
+      register(name, email, password);
     }
   }
 

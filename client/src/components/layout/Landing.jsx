@@ -1,8 +1,14 @@
-import React from "react";
+import { connect } from "react-redux";
 
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
-const Landing = () => {
+const Landing = ({ isAuthenticated }) => {
+  const navigate = useNavigate();
+
+  if (isAuthenticated) {
+    navigate("/dashboard");
+  }
+
   return (
     <section className="landing">
       <div className="dark-overlay">
@@ -26,4 +32,8 @@ const Landing = () => {
   );
 };
 
-export default Landing;
+const mapStateToProps = (state) => ({
+  isAuthenticated: state.auth.isAuthenticated,
+});
+
+export default connect(mapStateToProps)(Landing);

@@ -4,11 +4,11 @@ const profileRoutes = require("./profile.routes");
 const postRoutes = require("./post.routes");
 
 module.exports = (app) => {
-    app.use('/api/user', userRoutes);
+  app.use("/api/user", userRoutes);
 
-    app.use('/api/auth', authRoute);
+  app.use("/api/auth", authRoute);
 
-    app.use('/api/profile/', profileRoutes);
+  app.use("/api/profile/", profileRoutes);
 
-    app.use('/api/post/', postRoutes);
-}
+  app.use("/api/posts/", postRoutes);
+};

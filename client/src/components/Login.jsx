@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, Navigate } from "react-router-dom";
 
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
@@ -12,9 +12,8 @@ const Login = ({ setAlert, login, isAuthenticated }) => {
     password: "",
   });
 
-  const navigate = useNavigate();
   if (isAuthenticated) {
-    navigate("/dashboard");
+    return <Navigate to="/dashboard" />;
   }
 
   const { email, password } = formData;
